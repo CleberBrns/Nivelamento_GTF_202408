@@ -1,18 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace CalculoCDB.Tests.CalculoCDB.Servico
+﻿namespace CalculoCDB.Tests.CalculoCDB.Servico
 {
-    public class CalculoCDB_TestesServico
+    public class CalculoCdb_TestesServico
     {
-        private readonly ICalculoCDBService _calculoCDBService;
+        private readonly ICalculoCdbService _calculoCDBService;
 
-        public CalculoCDB_TestesServico()
+        public CalculoCdb_TestesServico()
         {
-            _calculoCDBService = new CalculoCDBService();
+            _calculoCDBService = new CalculoCdbService();
         }
 
         [Fact(DisplayName = "Deve Efetuar um Calculo do CBD com sucesso")]
@@ -21,7 +15,7 @@ namespace CalculoCDB.Tests.CalculoCDB.Servico
             //Arrange
 
             //Act
-            var resultadoCalculadoInvestimento = _calculoCDBService.CalcularCBD(1, 1200m);
+            var resultadoCalculadoInvestimento = _calculoCDBService.CalcularInvestimentoCBD(4, 1200m);
 
             //Assert
             Assert.True(
@@ -32,30 +26,54 @@ namespace CalculoCDB.Tests.CalculoCDB.Servico
         }
     }
 
-    public class CalculoCDBService : ICalculoCDBService
+    public class CalculoCdbService : ICalculoCdbService
     {
         /// <summary>
-        /// 
+        /// Efetua o Cáculo para um Investimento CBD
         /// </summary>
         /// <param name="prazo"></param>
         /// <param name="valorInvestir"></param>
         /// <returns>Retorna o Resultado do Cálculo de um investimento, contendo o Valor Final Bruto e o Valor Final Líquido</returns>
         /// <exception cref="NotImplementedException"></exception>
-        Resultado<InvestimentoCalculado> ICalculoCDBService.CalcularCBD(int prazo, decimal valorInvestir)
+        public Resultado<InvestimentoCalculado> CalcularInvestimentoCBD(int prazo, decimal valorInvestir)
         {
-            throw new NotImplementedException();
+            decimal valorFinalBruto = valorInvestir;
+            decimal valorFinalLiquido = 0;
+
+            for (int i = 0; i < prazo; i++)
+            {
+                valorFinalBruto *= EfetuarCalculoCBD();
+                valorFinalLiquido += valorFinalBruto;
+            }
+
+            var investimentoCalculado = new InvestimentoCalculado(valorFinalBruto, valorFinalLiquido);
+
+            return new Resultado<InvestimentoCalculado>(investimentoCalculado, true, string.Empty);
+        }
+
+        static decimal EfetuarCalculoCBD()
+        {
+            decimal porcentagemCDI = 0.9m;
+            decimal procentagemTB = 108m;
+
+            return 1 + (PercentualTaxa(porcentagemCDI) * PercentualTaxa(procentagemTB));
+        }
+
+        static decimal PercentualTaxa(decimal taxa)
+        {
+            return taxa / 100;
         }
     }
 
-    public interface ICalculoCDBService
+    public interface ICalculoCdbService
     {
         /// <summary>
-        /// Efetua o Cáculo de um Investimento CBD
+        /// Efetua o Cáculo para um Investimento CBD
         /// </summary>
         /// <param name="prazo"></param>
         /// <param name="valorInvestir"></param>
         /// <returns>ValorFinalBruto, ValorFinalLiquido</returns>
-        Resultado<InvestimentoCalculado> CalcularCBD(int prazo, decimal valorInvestir);
+        Resultado<InvestimentoCalculado> CalcularInvestimentoCBD(int prazo, decimal valorInvestir);
     }
 
     public class Resultado<T>
@@ -66,8 +84,9 @@ namespace CalculoCDB.Tests.CalculoCDB.Servico
 
         public string Mensagem { get; private set; }
 
-        public Resultado(bool sucesso, string mensagem)
+        public Resultado(T value, bool sucesso, string mensagem)
         {
+            Value = value;
             Sucesso = sucesso;
             Mensagem = mensagem;
         }
@@ -85,5 +104,4 @@ namespace CalculoCDB.Tests.CalculoCDB.Servico
             ValorFinalLiquido = valorFinalLiquido;
         }
     }
-    
 }
