@@ -21,22 +21,27 @@ namespace CalculoCDB.Tests.CalculoCDB.Servico
             //Arrange
 
             //Act
-            var valorCalculado = _calculoCDBService.CalcularCBD(1, 1200m);
+            var resultadoCalculadoInvestimento = _calculoCDBService.CalcularCBD(1, 1200m);
 
             //Assert
-            Assert.True(valorCalculado.Item1 > 0 && valorCalculado.Item2 > 0);
+            Assert.True(
+                resultadoCalculadoInvestimento.Sucesso &&
+                resultadoCalculadoInvestimento.Value != null &&
+                resultadoCalculadoInvestimento.Value.ValorFinalBruto > 0 &&
+                resultadoCalculadoInvestimento.Value.ValorFinalLiquido > 0);
         }
     }
 
     public class CalculoCDBService : ICalculoCDBService
     {
         /// <summary>
-        /// Efetua o Cáculo de um Investimento CBD
+        /// 
         /// </summary>
         /// <param name="prazo"></param>
         /// <param name="valorInvestir"></param>
-        /// <returns>ValorFinalBruto, ValorFinalLiquido</returns>
-        public Tuple<decimal, decimal> CalcularCBD(int prazo, decimal valorInvestir)
+        /// <returns>Retorna o Resultado do Cálculo de um investimento, contendo o Valor Final Bruto e o Valor Final Líquido</returns>
+        /// <exception cref="NotImplementedException"></exception>
+        Resultado<InvestimentoCalculado> ICalculoCDBService.CalcularCBD(int prazo, decimal valorInvestir)
         {
             throw new NotImplementedException();
         }
@@ -50,6 +55,35 @@ namespace CalculoCDB.Tests.CalculoCDB.Servico
         /// <param name="prazo"></param>
         /// <param name="valorInvestir"></param>
         /// <returns>ValorFinalBruto, ValorFinalLiquido</returns>
-        Tuple<decimal, decimal> CalcularCBD(int prazo, decimal valorInvestir);
-    } 
+        Resultado<InvestimentoCalculado> CalcularCBD(int prazo, decimal valorInvestir);
+    }
+
+    public class Resultado<T>
+    {
+        public T Value { get; set; }
+
+        public bool Sucesso { get; set; }
+
+        public string Mensagem { get; private set; }
+
+        public Resultado(bool sucesso, string mensagem)
+        {
+            Sucesso = sucesso;
+            Mensagem = mensagem;
+        }
+    }
+
+    public class InvestimentoCalculado
+    {
+        public decimal ValorFinalBruto { get; private set; }
+
+        public decimal ValorFinalLiquido { get; private set; }
+
+        public InvestimentoCalculado(decimal valorFinalBruto, decimal valorFinalLiquido)
+        {
+            ValorFinalBruto = valorFinalBruto;
+            ValorFinalLiquido = valorFinalLiquido;
+        }
+    }
+    
 }
