@@ -1,4 +1,7 @@
-﻿namespace CalculoCDB.CrossCutting.Extensions
+﻿using CalculoCDB.CrossCutting.Resources;
+using CalculoCDB.CrossCutting.Validadores;
+
+namespace CalculoCDB.CrossCutting.Extensions
 {
     public static class DecimalExtension
     {
@@ -9,8 +12,7 @@
         /// <returns></returns>
         public static decimal PercentualTaxa(this decimal taxa)
         {
-            if (taxa == 0)
-                throw new ArgumentException("Valor da Taxa não pode ser igual a Zero!");
+            ValidadorException.Validar(taxa == 0, GeneralResource.ValorDoParamentroNaoPodeSerZero(nameof(taxa).ToUpper()));
 
             return taxa / 100;
         }
@@ -23,11 +25,10 @@
         /// <returns></returns>
         public static decimal CalcularValorComImposto(this decimal valorBruto, decimal imposto)
         {
-            if (valorBruto == 0)
-                throw new ArgumentException("Valor Bruto não pode ser igual a Zero!");
-
-            if (imposto == 0)
-                throw new ArgumentException("Valor do Imposto não pode ser igual a Zero!");
+            ValidadorRegra.New()
+                .Quando(valorBruto == 0, GeneralResource.ValorDoParamentroNaoPodeSerZero(nameof(valorBruto).ToUpper()))
+                .Quando(imposto == 0, GeneralResource.ValorDoParamentroNaoPodeSerZero(nameof(imposto).ToUpper()))
+                .ThrowMensagensValidacao();
 
             decimal valorDesconto = valorBruto * imposto.PercentualTaxa();
             decimal valorLiquido = valorBruto - valorDesconto;

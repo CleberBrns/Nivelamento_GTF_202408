@@ -20,7 +20,7 @@
         /// </summary>
         /// <param name="regraInvalida"></param>
         /// <param name="mensagemValidacao"></param>
-        public static void Quando(bool regraInvalida, string mensagemValidacao)
+        public static void Validar(bool regraInvalida, string mensagemValidacao)
         {
             if (regraInvalida)
                 throw new ValidadorException(mensagemValidacao);

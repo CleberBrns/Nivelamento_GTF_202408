@@ -1,4 +1,6 @@
-﻿using CalculoCDB.Service.Interfaces.Imposto;
+﻿using CalculoCDB.CrossCutting.Resources;
+using CalculoCDB.CrossCutting.Validadores;
+using CalculoCDB.Service.Interfaces.Imposto;
 
 namespace CalculoCDB.Service.Services.Imposto
 {
@@ -11,8 +13,8 @@ namespace CalculoCDB.Service.Services.Imposto
         /// <returns></returns>
         public ICalculadorImposto GetCalculadorImposto(int quantidadeMeses)
         {
-            if (quantidadeMeses == 0)
-                throw new ArgumentException("Quantidade de Meses não pode ser igual a Zero!");
+            ValidadorException.Validar(quantidadeMeses == 0,
+                GeneralResource.ValorDoParamentroNaoPodeSerZero(nameof(quantidadeMeses).ToUpper()));
 
             return quantidadeMeses switch
             {

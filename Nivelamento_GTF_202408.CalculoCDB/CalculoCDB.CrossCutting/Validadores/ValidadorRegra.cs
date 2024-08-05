@@ -9,7 +9,7 @@
             _mensagensValidacao = new List<string>();
         }
 
-        public static ValidadorRegra Novo()
+        public static ValidadorRegra New()
         {
             return new ValidadorRegra();
         }
