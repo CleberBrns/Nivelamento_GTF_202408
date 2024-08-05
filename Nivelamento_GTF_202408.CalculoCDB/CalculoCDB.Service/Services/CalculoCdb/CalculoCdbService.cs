@@ -18,13 +18,12 @@ namespace CalculoCDB.Service.Services.CalculoCdb
         /// <summary>
         /// Efetua o Cáculo para um Investimento CBD
         /// </summary>
-        /// <param name="prazo"></param>
-        /// <param name="valorInvestir"></param>
-        /// <returns>Retorna o Resultado do Cálculo de um investimento, contendo o Valor Final Bruto e o Valor Final Líquido</returns>
-        /// <exception cref="NotImplementedException"></exception>
-        public Resultado<InvestimentoCalculado> CalcularInvestimentoCBD(int prazo, decimal valorInvestir)
+        /// <param name="prazo">Prazo do Investimento</param>
+        /// <param name="valor">Valor do Investimento</param>
+        /// <returns>ValorFinalBruto, ValorFinalLiquido</returns>
+        public Resultado<InvestimentoCalculado> CalcularInvestimentoCBD(int prazo, decimal valor)
         {
-            decimal valorFinalBruto = valorInvestir;
+            decimal valorFinalBruto = valor;
 
             for (int i = 0; i < prazo; i++)
             {

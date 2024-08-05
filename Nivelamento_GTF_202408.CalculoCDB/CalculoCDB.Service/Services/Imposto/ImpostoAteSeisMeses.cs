@@ -22,10 +22,7 @@ namespace CalculoCDB.Service.Services.Imposto
         /// <exception cref="NotImplementedException"></exception>
         public decimal CalcularImposto(decimal valorBruto)
         {
-            decimal valorDesconto = valorBruto * _imposto.PercentualTaxa();
-            decimal valorLiquido = valorBruto - valorDesconto;
-
-            return valorLiquido;
+            return valorBruto.CalcularValorComImposto(_imposto);
         }
     }
 }
