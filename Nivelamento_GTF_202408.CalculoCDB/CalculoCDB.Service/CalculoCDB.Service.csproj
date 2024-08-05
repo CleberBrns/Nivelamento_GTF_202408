@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CalculoCDB.CrossCutting\CalculoCDB.CrossCutting.csproj" />
+    <ProjectReference Include="..\CalculoCDB.Domain\CalculoCDB.Domain.csproj" />
+  </ItemGroup>
+
+</Project>

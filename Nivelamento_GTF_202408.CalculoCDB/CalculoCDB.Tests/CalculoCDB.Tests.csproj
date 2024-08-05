@@ -20,4 +20,10 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\CalculoCDB.CrossCutting\CalculoCDB.CrossCutting.csproj" />
+    <ProjectReference Include="..\CalculoCDB.Domain\CalculoCDB.Domain.csproj" />
+    <ProjectReference Include="..\CalculoCDB.Service\CalculoCDB.Service.csproj" />
+  </ItemGroup>
+
 </Project>
