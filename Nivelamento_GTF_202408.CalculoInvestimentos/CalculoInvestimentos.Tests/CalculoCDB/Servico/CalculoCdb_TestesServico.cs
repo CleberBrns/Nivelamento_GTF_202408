@@ -38,7 +38,8 @@ namespace Investimentos.Tests.Investimentos.Servico
                 resultadoCalculadoInvestimento.Sucesso &&
                 resultadoCalculadoInvestimento.Value != null &&
                 resultadoCalculadoInvestimento.Value.ValorFinalBruto > 0 &&
-                resultadoCalculadoInvestimento.Value.ValorFinalLiquido > 0);
+                resultadoCalculadoInvestimento.Value.ValorFinalLiquido > 0 &&
+                resultadoCalculadoInvestimento.Value.ValorFinalBruto > resultadoCalculadoInvestimento.Value.ValorFinalLiquido);
         }
 
         [Fact(DisplayName = "Deve Efetuar um Cálculo do CBD com a Faixa de Imposto até Doze Meses.")]
@@ -56,7 +57,8 @@ namespace Investimentos.Tests.Investimentos.Servico
                 resultadoCalculadoInvestimento.Sucesso &&
                 resultadoCalculadoInvestimento.Value != null &&
                 resultadoCalculadoInvestimento.Value.ValorFinalBruto > 0 &&
-                resultadoCalculadoInvestimento.Value.ValorFinalLiquido > 0);
+                resultadoCalculadoInvestimento.Value.ValorFinalLiquido > 0 &&
+                resultadoCalculadoInvestimento.Value.ValorFinalBruto > resultadoCalculadoInvestimento.Value.ValorFinalLiquido);
         }
 
         [Fact(DisplayName = "Deve Efetuar um Cálculo do CBD com a Faixa de Imposto até Vinte e Quatro Meses.")]
@@ -74,7 +76,8 @@ namespace Investimentos.Tests.Investimentos.Servico
                 resultadoCalculadoInvestimento.Sucesso &&
                 resultadoCalculadoInvestimento.Value != null &&
                 resultadoCalculadoInvestimento.Value.ValorFinalBruto > 0 &&
-                resultadoCalculadoInvestimento.Value.ValorFinalLiquido > 0);
+                resultadoCalculadoInvestimento.Value.ValorFinalLiquido > 0 &&
+                resultadoCalculadoInvestimento.Value.ValorFinalBruto > resultadoCalculadoInvestimento.Value.ValorFinalLiquido);
         }
 
         [Fact(DisplayName = "Deve Efetuar um Cálculo do CBD com a Faixa de Imposto maior que Vinte e Quatro Meses.")]
@@ -92,7 +95,8 @@ namespace Investimentos.Tests.Investimentos.Servico
                 resultadoCalculadoInvestimento.Sucesso &&
                 resultadoCalculadoInvestimento.Value != null &&
                 resultadoCalculadoInvestimento.Value.ValorFinalBruto > 0 &&
-                resultadoCalculadoInvestimento.Value.ValorFinalLiquido > 0);
+                resultadoCalculadoInvestimento.Value.ValorFinalLiquido > 0 &&
+                resultadoCalculadoInvestimento.Value.ValorFinalBruto > resultadoCalculadoInvestimento.Value.ValorFinalLiquido);
         }
 
         [Fact(DisplayName = "Não Deve Efetuar um Cálculo do CBD quando o Prazo informado for Igual a Zero.")]

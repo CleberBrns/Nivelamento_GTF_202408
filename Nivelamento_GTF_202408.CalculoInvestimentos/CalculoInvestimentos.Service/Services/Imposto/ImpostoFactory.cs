@@ -1,4 +1,5 @@
-﻿using Investimentos.CrossCutting.Resources;
+﻿using CalculoInvestimentos.CrossCutting.Resources;
+using Investimentos.CrossCutting.Resources;
 using Investimentos.CrossCutting.Validadores;
 using Investimentos.Service.Interfaces.Imposto;
 
@@ -18,7 +19,7 @@ namespace Investimentos.Service.Services.Imposto
                    .Quando(quantidadeMeses < 0, GeneralResource.ValorDoParamentroNaoPodeSerNegativo(nameof(quantidadeMeses).ToUpper()))
                    .ThrowMensagensValidacao();
 
-            return quantidadeMeses switch
+            ICalculadorImposto calculadorImposto = quantidadeMeses switch
             {
                 var _ when quantidadeMeses <= 6 => new ImpostoAteSeisMeses(),
                 var _ when quantidadeMeses is > 6 and <= 12 => new ImpostoAteDozeMeses(),
@@ -26,6 +27,11 @@ namespace Investimentos.Service.Services.Imposto
                 var _ when quantidadeMeses > 24 => new ImpostoAcimaDeVinteQuatroMeses(),
                 _ => null,
             };
+
+            ValidadorException.Validar(calculadorImposto == null,
+                ImpostoResource.ImpostoNaoParametrizadoParaQuantidadeMeses);
+
+            return calculadorImposto;
         }
     }
 }

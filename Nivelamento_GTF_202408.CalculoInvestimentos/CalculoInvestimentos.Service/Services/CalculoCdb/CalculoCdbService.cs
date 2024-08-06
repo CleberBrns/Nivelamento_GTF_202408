@@ -42,8 +42,11 @@ namespace Investimentos.Service.Services.CalculoCdb
                 }
 
                 ICalculadorImposto calculadorImposto = _impostoFactory.GetCalculadorImposto(prazo);
+                decimal rendimentoBruto = valorFinalBruto - valor;
 
-                decimal valorFinalLiquido = calculadorImposto.CalcularImposto(valorFinalBruto);
+                decimal rendimentoLiquido = calculadorImposto.CalcularImposto(rendimentoBruto);
+                decimal valorFinalLiquido = valor + rendimentoLiquido;
+
                 var investimentoCalculado = new InvestimentoCalculado(valorFinalBruto, valorFinalLiquido);
 
                 return new Resultado<InvestimentoCalculado>(investimentoCalculado, true, string.Empty);
