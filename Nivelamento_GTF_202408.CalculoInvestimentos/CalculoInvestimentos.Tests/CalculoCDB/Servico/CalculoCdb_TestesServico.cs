@@ -31,7 +31,7 @@ namespace Investimentos.Tests.Investimentos.Servico
             decimal valor = _faker.Random.Decimal(1m, 10000m);
 
             //Act
-            var resultadoCalculadoInvestimento = _calculoCDBService.CalcularInvestimentoCBD(prazo, valor);
+            var resultadoCalculadoInvestimento = _calculoCDBService.CalcularInvestimentoCdb(prazo, valor);
 
             //Assert
             Assert.True(
@@ -50,7 +50,7 @@ namespace Investimentos.Tests.Investimentos.Servico
             decimal valor = _faker.Random.Decimal(1m, 10000m);
 
             //Act
-            var resultadoCalculadoInvestimento = _calculoCDBService.CalcularInvestimentoCBD(prazo, valor);
+            var resultadoCalculadoInvestimento = _calculoCDBService.CalcularInvestimentoCdb(prazo, valor);
 
             //Assert
             Assert.True(
@@ -69,7 +69,7 @@ namespace Investimentos.Tests.Investimentos.Servico
             decimal valor = _faker.Random.Decimal(1m, 10000m);
 
             //Act
-            var resultadoCalculadoInvestimento = _calculoCDBService.CalcularInvestimentoCBD(prazo, valor);
+            var resultadoCalculadoInvestimento = _calculoCDBService.CalcularInvestimentoCdb(prazo, valor);
 
             //Assert
             Assert.True(
@@ -88,7 +88,7 @@ namespace Investimentos.Tests.Investimentos.Servico
             decimal valor = _faker.Random.Decimal(1m, 10000m);
 
             //Act
-            var resultadoCalculadoInvestimento = _calculoCDBService.CalcularInvestimentoCBD(prazo, valor);
+            var resultadoCalculadoInvestimento = _calculoCDBService.CalcularInvestimentoCdb(prazo, valor);
 
             //Assert
             Assert.True(
@@ -109,7 +109,7 @@ namespace Investimentos.Tests.Investimentos.Servico
             var mensagemEsperada = GeneralResource.ValorDoParamentroNaoPodeSerZero(nameof(prazo).ToUpper());
 
             //Act
-            var resultadoCalculadoInvestimento = _calculoCDBService.CalcularInvestimentoCBD(prazo, valor);
+            var resultadoCalculadoInvestimento = _calculoCDBService.CalcularInvestimentoCdb(prazo, valor);
 
             //Assert
             Assert.True(
@@ -127,7 +127,7 @@ namespace Investimentos.Tests.Investimentos.Servico
             var mensagemEsperada = GeneralResource.ValorDoParamentroNaoPodeSerNegativo(nameof(prazo).ToUpper());
 
             //Act
-            var resultadoCalculadoInvestimento = _calculoCDBService.CalcularInvestimentoCBD(prazo, valor);
+            var resultadoCalculadoInvestimento = _calculoCDBService.CalcularInvestimentoCdb(prazo, valor);
 
             //Assert
             Assert.True(
@@ -145,7 +145,7 @@ namespace Investimentos.Tests.Investimentos.Servico
             var mensagemEsperada = GeneralResource.ValorDoParamentroNaoPodeSerZero(nameof(valor).ToUpper());
 
             //Act
-            var resultadoCalculadoInvestimento = _calculoCDBService.CalcularInvestimentoCBD(prazo, valor);
+            var resultadoCalculadoInvestimento = _calculoCDBService.CalcularInvestimentoCdb(prazo, valor);
 
             //Assert
             Assert.True(
@@ -163,7 +163,7 @@ namespace Investimentos.Tests.Investimentos.Servico
             var mensagemEsperada = GeneralResource.ValorDoParamentroNaoPodeSerNegativo(nameof(valor).ToUpper());
 
             //Act
-            var resultadoCalculadoInvestimento = _calculoCDBService.CalcularInvestimentoCBD(prazo, valor);
+            var resultadoCalculadoInvestimento = _calculoCDBService.CalcularInvestimentoCdb(prazo, valor);
 
             //Assert
             Assert.True(

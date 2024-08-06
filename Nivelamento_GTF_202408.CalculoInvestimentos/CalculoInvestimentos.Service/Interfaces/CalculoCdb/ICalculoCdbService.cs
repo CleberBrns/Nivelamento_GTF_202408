@@ -5,6 +5,6 @@ namespace Investimentos.Service.Interfaces.CalculoCdb
 {
     public interface ICalculoCdbService
     {
-        Resultado<InvestimentoCalculado> CalcularInvestimentoCBD(int prazo, decimal valor);
+        Resultado<InvestimentoCalculado> CalcularInvestimentoCdb(int prazo, decimal valor);
     }
 }

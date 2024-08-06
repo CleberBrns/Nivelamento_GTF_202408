@@ -23,7 +23,7 @@ namespace Investimentos.Service.Services.CalculoCdb
         /// <param name="prazo">Prazo do Investimento</param>
         /// <param name="valor">Valor do Investimento</param>
         /// <returns>ValorFinalBruto, ValorFinalLiquido</returns>
-        public Resultado<InvestimentoCalculado> CalcularInvestimentoCBD(int prazo, decimal valor)
+        public Resultado<InvestimentoCalculado> CalcularInvestimentoCdb(int prazo, decimal valor)
         {
             try
             {

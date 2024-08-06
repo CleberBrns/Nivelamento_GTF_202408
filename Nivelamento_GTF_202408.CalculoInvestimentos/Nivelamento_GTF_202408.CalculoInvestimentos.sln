@@ -13,6 +13,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CalculoInvestimentos.Tests"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CalculoInvestimentos.Infra.IoC", "CalculoInvestimentos.Infra.IoC\CalculoInvestimentos.Infra.IoC.csproj", "{A577A4B5-ADEE-4260-845C-DC2573FAA1ED}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CalculoInvestimentos.Api", "CalculoInvestimentos.Api\CalculoInvestimentos.Api.csproj", "{08055C66-CA27-4902-8EEC-9F5EF1A12BC6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{A577A4B5-ADEE-4260-845C-DC2573FAA1ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A577A4B5-ADEE-4260-845C-DC2573FAA1ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A577A4B5-ADEE-4260-845C-DC2573FAA1ED}.Release|Any CPU.Build.0 = Release|Any CPU
+		{08055C66-CA27-4902-8EEC-9F5EF1A12BC6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{08055C66-CA27-4902-8EEC-9F5EF1A12BC6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{08055C66-CA27-4902-8EEC-9F5EF1A12BC6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{08055C66-CA27-4902-8EEC-9F5EF1A12BC6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
